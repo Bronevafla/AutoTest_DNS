@@ -49,7 +49,7 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                    <encoding>${encoding.type</encoding>
+                    <encoding>${encoding.type}</encoding>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,0 +1,11 @@
+# Default ignored files
+*.iml
+*.jar
+*.war
+*.log
+
+#Folder
+target
+.idea
+
+
