@@ -1,35 +1,28 @@
 package ru.appline.base;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import static ru.appline.framework.managers.InitManager.initFramework;
+import static ru.appline.framework.managers.InitManager.quitFramework;
 
-import java.util.concurrent.TimeUnit;
+import org.junit.After;
+import org.junit.Before;
+import ru.appline.framework.managers.InitManager;
+import ru.appline.framework.managers.ManagerPages;
 
 public class BaseTest {
 
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+    protected ManagerPages app = ManagerPages.getManagerPages();
 
-    @BeforeClass
-    public static void before(){
-        System.setProperty("webdriver.chrome.driver", "webdriver/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        wait = new WebDriverWait(driver, 10, 1000);
 
-        String baseUrl = "https://www.dns-shop.ru/";
-        driver.get(baseUrl);
+    @Before
+    public void before(){
+        InitManager.initFramework();
+
     }
 
-    @AfterClass
-    public static void after(){
-        driver.quit();
+    @After
+    public void after(){
+        InitManager.quitFramework();
     }
 
 }
